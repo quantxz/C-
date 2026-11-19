@@ -16,10 +16,10 @@ unsafe
 
     list.Print();
 
-    int a = list.Get(3);
-    Console.WriteLine("\n" + a + "\n");
+    Console.WriteLine("\n" + "\n");
 
     list.Set(3, 5);
+    list.Pop();
     list.Print();
 }
 
@@ -79,20 +79,52 @@ unsafe public class IntegersLinkedList
                 Console.WriteLine("Apagado");
                 head = head->Next;
                 NativeMemory.Free(next);
+                next = null;
                 return;
             }
 
             if (next->Value == value && next->Value != 0 && next->Next != null)
             {
-                next->Value = 0;
+
                 Console.WriteLine("Apagado");
-                tail = current;
+                if (next == tail)
+                {
+                    tail = current;
+                }
+                next->Value = 0;
                 current->Next = next->Next;
                 NativeMemory.Free(next);
+                next = null;
                 return;
             }
             current = current->Next;
         }
+    }
+
+    public void Pop()
+    {
+        Node* current = head;
+        while (current->Next != null)
+        {
+            if (current->Next == tail)
+            {
+                current->Next->Value = 0;
+                tail = current;
+                NativeMemory.Free(current->Next);
+                current->Next = null;
+                return;
+            }
+            current = current->Next;
+        }
+    }
+
+    public void Delete()
+    {
+        Node* current = head;
+        head->Value = 0;
+        NativeMemory.Free(current);
+        current = null;
+        head = head->Next;
     }
 
     public void Clear()
@@ -162,6 +194,7 @@ unsafe public class IntegersLinkedList
                 current->Value = newValue;
                 return current->Value;
             }
+    
             current = current->Next;
         }
         return current->Value;
@@ -182,16 +215,4 @@ unsafe public class IntegersLinkedList
         }
     }
 
-    private void SetTail()
-    {
-        Node* current = head;
-        while (current->Next != null)
-        {
-            current = current->Next;
-            if (current->Next == null)
-            {
-                tail = current->Next;
-            }
-        }
-    }
 }

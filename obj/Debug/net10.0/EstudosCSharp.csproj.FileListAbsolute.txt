@@ -26,3 +26,4 @@ C:\Users\canal\OneDrive\Área de Trabalho\limpar\EstudosCSharp\obj\Debug\net10.0
 C:\Users\canal\OneDrive\Área de Trabalho\limpar\EstudosCSharp\obj\Debug\net10.0\EstudosCSharp.pdb
 C:\Users\canal\OneDrive\Área de Trabalho\limpar\EstudosCSharp\obj\Debug\net10.0\EstudosCSharp.genruntimeconfig.cache
 C:\Users\canal\OneDrive\Área de Trabalho\limpar\EstudosCSharp\obj\Debug\net10.0\ref\EstudosCSharp.dll
+C:\Users\canal\OneDrive\Área de Trabalho\limpar\EstudosCSharp\obj\Debug\net10.0\EstudosCSharp.sourcelink.json
